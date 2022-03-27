@@ -11,7 +11,7 @@ class Ball(Turtle):
         self.position= [(0, 350), (350, 350)]
 
     def refresh_ball(self):
-        self.
+
         self.penup()
         position = random.choice(self.position)
         self.goto(position)
