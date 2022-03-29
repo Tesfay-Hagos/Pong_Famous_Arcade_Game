@@ -9,16 +9,30 @@ screen.title(" Tesfay Pong Game")
 
 screen.setup(width=800, height=600, startx=0, starty=0)
 
-paddle = Paddle((350, 0) , "Up", "Down")
-paddle2 = Paddle((-350, 0), "w", "s")
+r_paddle = Paddle((350, 0), "Up", "Down")
+l_paddle = Paddle((-350, 0), "w", "s")
 ball = Ball()
 game_is_on = True
 while game_is_on:
     time.sleep(0.1)
     screen.update()
-    ball.refresh_ball()
-    if ball.ycor() > 250 or ball.ycor() < -250:
-        ball.bounce()
+    ball.move()
+    if ball.ycor() > 280 or ball.ycor() < -280:
+        ball.bounce_y()
+
+    # detect collision with r_paddle
+    if ball.distance(r_paddle) < 50 and ball.xcor() > 320 or ball.distance(l_paddle) < 50 and ball.xcor() < -320:
+        ball.bounce_x()
+
+    # detect if the r_paddle misses the ball
+    if ball.xcor() > 350:
+        ball.re_fresh()
+    # detect if the l_paddle misses the ball
+    if ball.xcor() < -350:
+        ball.re_fresh()
+
+
+
 
 
 
