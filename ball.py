@@ -7,12 +7,15 @@ class Ball(Turtle):
         super().__init__()
         self.color("white")
         self.shape("circle")
-        self.goto(0, 0)
-        self.position= [(0, 350), (350, 350)]
+        self.penup()
+        self.x_move = 10
+        self.y_move = 10
 
     def refresh_ball(self):
+        new_x = self.xcor() + self.x_move
+        new_y = self.ycor() + self.x_move
+        self.goto(new_x, new_y)
 
-        self.penup()
-        position = random.choice(self.position)
-        self.goto(position)
-        self.clear()
+    def bounce(self):
+        self.y_move *= -1
+
