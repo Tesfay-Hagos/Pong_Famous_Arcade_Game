@@ -2,7 +2,6 @@
 from turtle import Turtle, Screen
 screen = Screen()
 
-
 class Paddle(Turtle):
 
     def __init__(self, position, up_key, down_key):
